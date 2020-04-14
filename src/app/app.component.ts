@@ -12,11 +12,13 @@ export class AppComponent {
   constructor(private http: HttpClient) { }
 
   ledsOn() {
+    alert('on');
     this.http.get<any>('http://87.110.81.238:255/bothOn?').subscribe(data => {
       this.totalAngularPackages = data.total;
     })
   }
   ledsOff() {
+    alert('off');
     this.http.get<any>('http://87.110.81.238:255/bothOff?').subscribe(data => {
       this.totalAngularPackages = data.total;
     })
