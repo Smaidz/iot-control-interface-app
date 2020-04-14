@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'iot-control-interface-app';
+  totalAngularPackages;
+  constructor(private http: HttpClient) { }
+
+  ledsOn() {
+    this.http.get<any>('http://87.110.81.238:255/bothOn?').subscribe(data => {
+      this.totalAngularPackages = data.total;
+    })
+  }
+  ledsOff() {
+    this.http.get<any>('http://87.110.81.238:255/bothOff?').subscribe(data => {
+      this.totalAngularPackages = data.total;
+    })
+  }
 }
