@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'iot-control-interface-app';
+  title = 'IoTBot Control App';
+  introText = 'This device is based on:'
   totalAngularPackages;
   constructor(private http: HttpClient) { }
 
