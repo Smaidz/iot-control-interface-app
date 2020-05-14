@@ -1,4 +1,3 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div>
   <div style="text-align:center">
     <h1>
@@ -13,23 +12,30 @@
   <div style="text-align:center">
     <div>
       <span>
-        <input placeholder="IP address" /> : <input placeholder="port" />
+        <input placeholder="IP address" (focusout)="setIP(IPaddress.value)" #IPaddress/> 
+        : 
+        <input placeholder="port" (focusout)="setPort(Port.value)" #Port/>
       </span>
     </div>
-    <div class="controls">
-      <button (mousedown)="ledsOn()" (mouseup)="ledsOff()" (mouseleave)="ledsOff()">
+    <br>
+    <div>
+      <select name="Speed" (change)="onDropdownChange(Speed.value)" #Speed></select>
+    </div>
+    <br>
+    <div>
+      <button (mousedown)="goForward()" (mouseup)="fullStop()" (mouseleave)="fullStop()">
         Full speed forward
       </button>
       <br>
-      <button (click)="ledsOn()">
+      <button (mousedown)="rotateLeft()" (mouseup)="fullStop()" (mouseleave)="fullStop()">
         Rotate Left
       </button>
-      <button (click)="ledsOff()">
+      <button (mousedown)="rotateRight()" (mouseup)="fullStop()" (mouseleave)="fullStop()">
         Rotate Right
       </button>
       <br>
-      <button (click)="ledsOff()">
-        Go backwards
+      <button (mousedown)="goBackward()" (mouseup)="fullStop()" (mouseleave)="fullStop()">
+        Go backward
       </button>
     </div>
   </div>

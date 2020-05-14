@@ -10,15 +10,57 @@ export class AppComponent {
   title = 'IoTBot Control App';
   introText = 'This device is based on:'
   totalAngularPackages;
+
+  IPaddress;
+  port;
+
+  speed;
+
   constructor(private http: HttpClient) { }
 
-  ledsOn() {
-    this.http.get<any>('http://87.110.81.238:255/bothOn?').subscribe(data => {
+  setIP(value) {
+    console.log(value);
+    this.IPaddress = value;
+    console.log(this.IPaddress);
+  }
+
+  setPort(value) {
+    console.log(value);
+    this.port = value;
+    console.log(this.port);
+  }
+
+  onDropdownChange(value) {
+    console.log(value);
+    this.speed = value;
+    console.log(this.speed);
+  }
+
+  goForward() {
+    this.http.get<any>('http://' + this.IPaddress + ':' + this.port + '/goForward?' + 'speed=' + this.speed).subscribe(data => {
       this.totalAngularPackages = data.total;
     })
   }
-  ledsOff() {
-    this.http.get<any>('http://87.110.81.238:255/bothOff?').subscribe(data => {
+  rotateLeft() {
+    this.http.get<any>('http://' + this.IPaddress + ':' + this.port + '/rotateLeft?' + 'speed=' + this.speed).subscribe(data => {
+      this.totalAngularPackages = data.total;
+    })
+  }
+
+  rotateRight() {
+    this.http.get<any>('http://' + this.IPaddress + ':' + this.port + '/rotateRight?' + 'speed=' + this.speed).subscribe(data => {
+      this.totalAngularPackages = data.total;
+    })
+  }
+
+  goBackward() {
+    this.http.get<any>('http://' + this.IPaddress + ':' + this.port + '/goBackward?' + 'speed=' + this.speed).subscribe(data => {
+      this.totalAngularPackages = data.total;
+    })
+  }
+
+  fullStop() {
+    this.http.get<any>('http://' + this.IPaddress + ':' + this.port + '/fullStop?').subscribe(data => {
       this.totalAngularPackages = data.total;
     })
   }
